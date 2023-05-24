@@ -11,6 +11,11 @@ function App() {
   const [searchInput,setSearchInput] = useState("")
   
   const createFood = (createdFood) =>   setFood([createdFood, ...allFood])
+  const deleteFood = (index)=>{
+    const cloneFoodArray=JSON.parse(JSON.stringify(allFood))
+    cloneFoodArray.splice(index,1)
+    setFood(cloneFoodArray)
+  }
   
   return (
     <div className="App">
@@ -22,7 +27,7 @@ function App() {
       <Row style={{ width: '100%', justifyContent: 'center' }}>
         {allFood.filter((eachFood)=> eachFood.name.includes(searchInput)).map((eachFood, index) => {
           return (
-            <FoodBox
+            <FoodBox deleteFood={deleteFood} index={index}
               key={index}
               food={{
                 name: eachFood.name,
