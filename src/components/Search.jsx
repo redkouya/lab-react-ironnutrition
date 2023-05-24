@@ -1,18 +1,29 @@
-import { Divider, Input } from 'antd';
+import { Divider, Input, Layout } from 'antd';
 function Search(props) {
-    const handleSearchChange=(event)=> {
-        console.log(event.target.value)
-        props.setSearchInput(event.target.value)
+  const handleSearchChange = (event) =>  props.setSearchInput(event.target.value);
+    const styleLayout={
+        width:"50%",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        margin:"auto"
     }
+
+
   return (
     <>
-    <Divider>Search</Divider>
+      <Layout style={styleLayout}>
+        <Divider>Search</Divider>
 
-    <label>Search</label>
-    <Input value={props.searchInput} type="text" onChange={handleSearchChange} />
-  </>
-);
-  
+        <Input
+            box="small"
+          value={props.searchInput}
+          type="text"
+          onChange={handleSearchChange}
+        />
+      </Layout>
+    </>
+  );
 }
 
-export default Search
+export default Search;

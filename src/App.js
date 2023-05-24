@@ -22,12 +22,18 @@ function App() {
     cloneFoodArray.splice(index,1)
     setFood(cloneFoodArray)
   }
-  
+  const styleLayout={
+    width:"50%",
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    margin:"auto"
+}
   return (
     <div className="App">
       <Search searchInput={searchInput} setSearchInput={setSearchInput}/>
-      <Collapse>
-      <Collapse.Panel header={isFormShowing?"Ocultar Formulario":"Mostrar Formulario"} onClick={handleCollapse}>
+      <Collapse style ={styleLayout} >
+      <Collapse.Panel  header={isFormShowing?"Ocultar Formulario":"Mostrar Formulario"} onClick={handleCollapse}>
       <AddFoodForm createFood={createFood} />
       </Collapse.Panel>
           
@@ -40,7 +46,7 @@ function App() {
       {/* si no hay nada en la busqueda muestra imagen y mensaje y si hay hace el filtrado */}
         {
           
-          allFood.filter((eachFood)=> eachFood.name.includes(searchInput)).length>0?allFood.filter((eachFood)=> eachFood.name.includes(searchInput)).map((eachFood, index) => {
+          allFood.filter((eachFood)=> eachFood.name.toLowerCase().includes(searchInput.toLowerCase())).length>0?allFood.filter((eachFood)=> eachFood.name.toLowerCase().includes(searchInput.toLowerCase())).map((eachFood, index) => {
           return (
             <FoodBox deleteFood={deleteFood} index={index}
               key={index}

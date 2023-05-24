@@ -1,4 +1,4 @@
-import { Divider, Input } from 'antd';
+import { Divider, Input,Layout } from 'antd';
 import { useState } from 'react';
 
 function AddFoodForm(props) {
@@ -15,17 +15,24 @@ function AddFoodForm(props) {
   const handleOnSubmit =(event)=>{
     event.preventDefault()
     props.createFood({name:nameInput,image:imgInput,calories:caloriesInput,servings:servingsInput})
-
   }
+  const styleLayout={
+    width:"50%",
+    display:"flex",
+    justifyContent:"center",
+    alignItems:"center",
+    margin:"auto"
+}
   return (
     <div>
+    <Layout style={styleLayout}>
       <form onSubmit={handleOnSubmit}>
         
           <Divider>Add Food Entry</Divider>
-
+          
           <label>Name</label>
           <Input value={nameInput} type="text" onChange={handleNameChange} />
-
+            
           <label>Image</label>
           <Input value={imgInput} type="text" onChange={handleImgChange} />
 
@@ -46,6 +53,7 @@ function AddFoodForm(props) {
           <button type="submit" >Create</button>
         
       </form>
+      </Layout>
     </div>
   );
 }
