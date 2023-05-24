@@ -37,7 +37,10 @@ function App() {
       <Divider>Food List</Divider>
 
       <Row style={{ width: '100%', justifyContent: 'center' }}>
-        {allFood.filter((eachFood)=> eachFood.name.includes(searchInput)).map((eachFood, index) => {
+      {/* si no hay nada en la busqueda muestra imagen y mensaje y si hay hace el filtrado */}
+        {
+          
+          allFood.filter((eachFood)=> eachFood.name.includes(searchInput)).length>0?allFood.filter((eachFood)=> eachFood.name.includes(searchInput)).map((eachFood, index) => {
           return (
             <FoodBox deleteFood={deleteFood} index={index}
               key={index}
@@ -49,7 +52,12 @@ function App() {
               }}
             />
           );
-        })}
+        }):<div>
+        
+       <h1>Oops! There is no content to show.</h1> 
+        <img src="https://cdn-icons-png.flaticon.com/512/5115/5115327.png" alt="" />
+        </div>
+        }
       </Row>
     </div>
   );
