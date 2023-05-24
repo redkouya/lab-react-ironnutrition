@@ -10,7 +10,7 @@ function AddFoodForm(props) {
   const handleNameChange = (event) => setNameInput(event.target.value);
   const handleImgChange = (event) => setImgInput(event.target.value);
   const handleCaloriesChange = (event) => setCaloriesInput(event.target.value);
-  const handleServingsInput = (event) => setServingsInput(event.target.value);
+  const handleServingsChange = (event) => setServingsInput(event.target.value);
 
   const handleOnSubmit =(event)=>{
     event.preventDefault()
@@ -40,7 +40,7 @@ function AddFoodForm(props) {
           <Input
             value={servingsInput}
             type="Number"
-            onChange={handleServingsInput}
+            onChange={handleServingsChange}
           />
 
           <button type="submit" >Create</button>
