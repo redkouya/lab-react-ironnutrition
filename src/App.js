@@ -2,14 +2,16 @@ import { useState } from 'react';
 import './App.css';
 import FoodBox from './components/FoodBox';
 import foods from './foods.json';
+import AddFoodForm from './components/AddFoodForm.jsx'
 
 function App() {
   const [allFoods, setFood] = useState(foods);
   return (
     <div className="App">
-      {allFoods.map((eachFood) => {
+    <AddFoodForm/>
+      {allFoods.map((eachFood,index) => {
         return (
-          <FoodBox
+          <FoodBox key={index}
             food={{
               name: eachFood.name,
               calories: eachFood.calories,
@@ -19,6 +21,7 @@ function App() {
           />
         );
       })}
+
     </div>
   );
 }
