@@ -1,6 +1,6 @@
 import { Divider, Input, Layout } from 'antd';
-function Search(props) {
-  const handleSearchChange = (event) =>  props.setSearchInput(event.target.value);
+function Search({setSearchInput,searchInput}) {
+  const handleSearchChange = (event) =>  setSearchInput(event.target.value);
     const styleLayout={
         width:"50%",
         display:"flex",
@@ -17,7 +17,7 @@ function Search(props) {
 
         <Input
             box="small"
-          value={props.searchInput}
+          value={searchInput}
           type="text"
           onChange={handleSearchChange}
         />
